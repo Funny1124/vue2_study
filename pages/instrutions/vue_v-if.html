@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_v-if</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app_v-if">
+    <button @click="changeIsShow">显示切换</button>
+    <button @click="incTemperature">升温</button>
+    <button @click="subTemperature">降温</button>
+    <p v-if="isShow">遇事不决，可问春风！</p>
+    <p v-show="isShow">遇事不决，可问春风！ ——v-show</p>
+    <h2 v-if="temperature<20">好冷好冷！</h2>
+    <h2 v-else-if="temperature>30">好热好热！</h2>
+    <h2 v-else>舒服！</h2>
+</div>
+<script>
+    const app = new Vue({
+        el: "#app_v-if",
+        data: {
+            isShow: false,
+            temperature: 26
+        },
+        methods: {
+            changeIsShow: function () {
+                this.isShow = !this.isShow;
+            },
+            incTemperature: function () {
+                this.temperature++;
+            },
+            subTemperature: function () {
+                this.temperature--;
+            }
+        }
+    });
+</script>
+</body>
+</html>

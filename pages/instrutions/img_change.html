@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_v-show</title>
+
+    <link href="../../css/img.css" rel="stylesheet">
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app_img_change">
+
+    <div>
+        <a href="#" @click="prev" v-show="index!==0">
+            <img src="../../img/prev.png" alt="">
+        </a>
+        <img v-bind:src="imgSrc[index]" alt="">
+        <a href="#" @click="next" v-show="index!==imgSrc.length-1">
+            <img src="../../img/next.png" alt="">
+        </a>
+    </div>
+
+
+</div>
+<script>
+    const app = new Vue({
+        el: "#app_img_change",
+        data: {
+            index: 0,
+            imgSrc: ["../../img/girl.jpg", "../../img/girl2.png", "../img/wallpaper.png"]
+        },
+        methods: {
+            prev: function () {
+                this.index--
+            },
+            next: function () {
+                this.index++
+            }
+        }
+    });
+</script>
+</body>
+</html>

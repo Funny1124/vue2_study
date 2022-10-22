@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_v-for</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app_v-for">
+    <button @click="add">新增人员</button>
+    <button @click="remove">减少人员</button>
+    <ul>
+        <li v-for="item in arr">
+            数据：{{ item }}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in objArr">
+            {{index}} {{ item }}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in objArr">
+            {{index}} {{ item.name }}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in objArr" :title="item.name">
+            {{ index+1 }} {{ item.name }}
+        </li>
+    </ul>
+</div>
+<script>
+    const app = new Vue({
+        el: "#app_v-for",
+        data: {
+            arr: [1, 2, 3, 4, 5, 6],
+            objArr: [{name: "张三"}, {name: "李四"}, {name: "王五"}]
+        },
+        methods: {
+            add: function () {
+                this.objArr.push({name: "无名氏"})
+            },
+            remove: function () {
+                this.objArr.shift()
+            }
+        }
+    });
+</script>
+</body>
+</html>

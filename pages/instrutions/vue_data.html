@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    <h2>{{ school.name }} {{ school.address }}</h2>
+    <ul>
+        <li>
+            {{ room.at(0) }}
+        </li>
+        <li>
+            {{ room.at(1) }}
+        </li>
+        <li>
+            {{ room.at(2) }}
+        </li>
+    </ul>
+</div>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue!",
+            school: {
+                name: "GUET",
+                address: "gxgl"
+            },
+            room: ["五教", "六教", "十八教"]
+        }
+    });
+</script>
+</body>
+</html>

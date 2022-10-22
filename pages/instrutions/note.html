@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>note</title>
+
+    <link href="../../css/note.css" rel="stylesheet">
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="note">
+    <h1>记事本</h1>
+    <input type="text" v-model="record" @keyup.enter="addNote">
+    <ul>
+        <li v-for="(item,index) in records">
+            {{index+1}}-{{item}} <button @click="removeNote(index)">X</button>
+        </li>
+    </ul>
+    <button v-show="records.length!==0" @click="removeAll">clear</button>
+    <div v-show="records.length!==0">{{this.records.length}}</div>
+</div>
+<script>
+    const app = new Vue({
+        el: "#note",
+        data: {
+            record: "",
+            records: []
+        },
+        methods: {
+            addNote: function () {
+                this.records.push(this.record)
+            },
+            removeNote: function (i) {
+                this.records.splice(i, 1)
+            },
+            removeAll: function () {
+                this.records = []
+            }
+        }
+    });
+</script>
+</body>
+</html>
